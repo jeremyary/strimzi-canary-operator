@@ -1,0 +1,24 @@
+# permissions for end users to edit canaries.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: canary-editor-role
+rules:
+- apiGroups:
+  - canary.strimzi.io
+  resources:
+  - canaries
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - canary.strimzi.io
+  resources:
+  - canaries/status
+  verbs:
+  - get

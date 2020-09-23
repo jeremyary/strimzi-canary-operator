@@ -1,0 +1,23 @@
+apiVersion: canary.strimzi.io/v1
+kind: Canary
+metadata:
+  name: canary-sample
+spec:
+  # Add fields here
+  size: 1
+  kafkaConfig:
+    bootstrapUrl: 'tenant2-kafka-bootstrap-strimzi-tenant2.apps.mw-ocp4.cloud.lab.eng.bos.redhat.com:443'
+  trafficProducer:
+    topic: 'traffic-gen-topic'
+    sendRate: '5'
+    clientId: 'traffic-gen-client'
+  secretVolumes:
+    - name: 'cluster-ca'
+      mountPath: '/etc/cluster-ca'
+      secretName: 'tenant2-cluster-ca-cert'
+    - name: 'client-ca'
+      mountPath: '/etc/client-ca'
+      secretName: 'tenant2-clients-ca'
+    - name: 'client-ca-cert'
+      mountPath: '/etc/client-ca-cert'
+      secretName: 'tenant2-clients-ca-cert'

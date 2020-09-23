@@ -1,0 +1,10 @@
+domain: strimzi.io
+layout: go.kubebuilder.io/v2
+repo: github.com/jeremyary/strimzi-canary-operator
+resources:
+- group: canary
+  kind: Canary
+  version: v1
+version: 3-alpha
+plugins:
+  go.operator-sdk.io/v2-alpha: {}
